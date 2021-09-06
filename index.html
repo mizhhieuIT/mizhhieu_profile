@@ -24,11 +24,11 @@
         <div class="info">
     
             <ul id="mn-mobie">
-                <li onclick="hid_menu()" class="top-li"><a href="#">ABOUT</a></li>
-                <li onclick="hid_menu()"><a href="#expid">EXPERIENCE</a></li>
-                <li onclick="hid_menu()"><a href="#eduid">EDUCATION</a></li>
-                <li onclick="hid_menu()"><a href="#skillid">SKILL</a></li>
-                <li onclick="hid_menu()"><a href="#interesid">INTERESTS</a></li>
+                <li class="top-li li-mobie"><a href="#">ABOUT</a></li>
+                <li class="li-mobie"><a href="#expid">EXPERIENCE</a></li>
+                <li class="li-mobie"><a href="#eduid">EDUCATION</a></li>
+                <li class="li-mobie"><a href="#skillid">SKILL</a></li>
+                <li class="li-mobie"><a href="#interesid">INTERESTS</a></li>
             </ul>
 
         </div>
@@ -207,11 +207,31 @@ using html, css, javascript, c# language to build website content for online lea
     
    <script>
        function show_menu(){
-        document.getElementById("mn-mobie").style.display = "block";
+           if(document.getElementById("mn-mobie").style.display == "block"){
+            document.getElementById("mn-mobie").style.display = "none";
+           }
+           else{
+            document.getElementById("mn-mobie").style.display = "block";
+           }
        }
-       function hid_menu(){
+       var win = window,
+        doc = document,
+        docElem = doc.documentElement,
+        body = doc.getElementsByTagName('body')[0],
+        x = win.innerWidth || docElem.clientWidth || body.clientWidth,
+        y = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
+        if(x <= 739){
+            var limobie = document.getElementsByClassName("li-mobie");
+            for(var i = 0 ; i< limobie.length;i++){
+                limobie[i].addEventListener("click",hid_menu);
+            }
+            
+        }
+        function hid_menu(){
         document.getElementById("mn-mobie").style.display = "none";
        }
+
+       
    </script> 
 </body>
 </html>
